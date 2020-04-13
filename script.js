@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const gameContent = document.querySelector('.gameContent')
   const startWindow = document.querySelector('.startWindow')
   const closeGame = document.querySelector('.closeGame')
+  const restartGameWindow = document.querySelector('.restartGameWindow')
   const randomNumberText = document.querySelector('.randomNumberText')
   const aboutRandomNumber = document.querySelector('.aboutRandomNumber')
   const scoreAfterGame = document.querySelector('.scoreAfterGame')
@@ -20,20 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     input.addEventListener('change', (e) => {
       let inputNumber = +e.target.value
-      let buttons = document.createElement('div')
+      let randomNumber = Math.floor(Math.random() * inputNumber) + 1
+      const buttons = document.createElement('div')
       buttons.className = 'buttons'
       btnsWindow.appendChild(buttons)
-
-      for (let i = 0; i < +inputNumber; i++) {
-      let numberBtns = document.createElement('div')
-          numberBtns.className = 'numberBtn'
-          numberBtns.textContent = i + 1
-          numberBtns.append[i]
-          buttonsArray.push(numberBtns)
-      }
-
-    let randomNumber = Math.floor(Math.random() * inputNumber) + 1
- 
+    
 ////////////////////////INPUT LENGTH CONTROL/////////////////////////////////////
 
   if (inputNumber <= 1) {
@@ -51,6 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
 ///////////////////////////GAME START////////////////////////////////////////
 
   buttonStart.addEventListener('click', () => {
+      deleteButtonsFromMassive()
+    for (let i = 0; i < +inputNumber; i++) {
+      let numberBtns = document.createElement('div')
+          numberBtns.className = 'numberBtn'
+          numberBtns.textContent = i + 1
+          numberBtns.append[i]
+          buttonsArray.push(numberBtns)
+      }
+
     buttonsArray.forEach((key, index) => {
     buttons.appendChild(key)  
     buttonStart.style.background = 'brown'
@@ -110,12 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (gameCounter == 0 && buttonNumber != randomNumber) {
         aboutRandomNumber.innerHTML = `Hävisit, numeroni oli: <strong>${randomNumber}</strong>`
-        Array(buttonsArray.keys()).findIndex(elem => {
+        let a = Array.from(buttonsArray.keys())
+        a.findIndex(elem => {        
           if (elem === randomNumber) {
             buttonsArray[elem - 1].style.border = '2px solid red'
           } 
-          if (randomNumber === Array(buttonsArray.keys()).length) {
-            buttonsArray[Array(buttonsArray.keys()).length - 1].style.border = '2px solid red'
+          if (randomNumber === elem + 1) {
+            buttonsArray[elem].style.border = '2px solid red'
           }
         });
         gameScoreDecrement()
@@ -138,11 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /////////////////////////////GAME RESTART IF GAME OVER OR WIN/////////////////////////////////////////////////
 
-  restartGame = () => {    
-    const restartGameWindow = document.querySelector('.restartGameWindow')
+  restartGame = () => {
     restartGameWindow.style.display = 'block'
     const restartBtn = document.querySelector('.restartBtn')
     restartBtn.addEventListener('click', () => {
+
       if (restartBtn) {
         activeNumberButtons()
         aboutRandomNumber.style.color = 'black'
@@ -156,6 +158,19 @@ document.addEventListener('DOMContentLoaded', () => {
         randomNumber = Math.floor(Math.random() * inputNumber) + 1
       }
     })
+  }
+
+  fullGameRestar = () => {
+    activeNumberButtons()
+    aboutRandomNumber.style.color = 'black'
+    aboutRandomNumber.innerHTML = ''
+    randomNumberText.innerHTML = ''
+    input.value = ''
+    restartGameWindow.style.display = 'none'
+    buttonsArray.forEach(key => {
+      key.style.border = '1px solid grey'
+    })
+    gameCounter = 3
   }
 })
 
@@ -210,12 +225,9 @@ document.addEventListener('DOMContentLoaded', () => {
 ////////////////////////////CLOSE GAME BUTTON////////////////////////////////////////////
 
   closeGame.addEventListener('click', () => {
+    fullGameRestar()
     deleteButtonsFromMassive()
     document.querySelector('.buttons').remove()
-    let bnts = ''
-    buttons = bnts
-    buttons = null
-    input.value = ''
     startWindow.style.display = 'flex'
     startWindow.style.transition = '3s linear'
     startWindow.style.opacity = '1'
@@ -231,6 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
   deleteButtonsFromMassive = () => {
     for (let i = 0; i < buttonsArray.length; i++) {
       delete buttonsArray[i]
+      buttonsArray =  []
     }
   }
 
