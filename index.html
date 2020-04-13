@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+  <link rel="stylesheet" href="style.css">
+  <title>1 - 10 Game</title>
+</head>
+<body>
+
+  <main>
+    <div class="gameWindow">
+      <div class="startWindow">
+        <button class="buttonStart">Aloita</button>
+        <p>Monta painiketta haluat ?</p>
+        <input class="input" type="number" min="2" max="20" placeholder="min = 2, max = 20">
+        <p>Paina <strong>Aloita</strong> pelataksesi numeropeliä</p>
+      </div>
+      <div class="scoreAfterGame">
+      </div>
+      <div class="gameContent">
+        <div class="score">
+          <p class="scoreText"></p>
+          <button class="closeGame">Lopeta</button>
+        </div>
+        <div class="gameText">
+          <p>Olen nyt valinnut oman numeroni, koeta arvata se.</p>
+        </div>
+      <div class="btnsWindow">
+        <!-- <div class="buttons">
+        </div> -->
+      </div>
+      <div class="randomNumberText"></div>
+      <div class="aboutRandomNumber"></div>
+      <div class="restartGameWindow">
+        <p class="restartText">Pelataanko vielä ?</p>
+        <button class="restartBtn">Kyllä</button>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footerText">Made by Roman, Ilkka, Jukka</div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
