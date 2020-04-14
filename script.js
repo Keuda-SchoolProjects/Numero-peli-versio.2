@@ -16,35 +16,33 @@ document.addEventListener('DOMContentLoaded', () => {
   let totalScoreWin = 0
   let totalScoreLose = 0
   let buttonsArray = []
-  
-/////////////////////////NUMBER FROM INPUT AND BUTTONS CREATE////////////////////////
-
-    input.addEventListener('change', (e) => {
-      let inputNumber = +e.target.value
-      let randomNumber = Math.floor(Math.random() * inputNumber) + 1
-      const buttons = document.createElement('div')
-      buttons.className = 'buttons'
-      btnsWindow.appendChild(buttons)
-    
+ 
 ////////////////////////INPUT LENGTH CONTROL/////////////////////////////////////
 
-  if (inputNumber <= 1) {
-    buttonStart.disabled = true
-    deleteButtonsFromMassive()
-    document.querySelector('.buttons').remove()
-  } else if (inputNumber > 20) {
-    buttonStart.disabled = true
-    deleteButtonsFromMassive()
-    document.querySelector('.buttons').remove()
-  } else {
-    buttonStart.disabled = false
-  }
+// if (input.value <= 1) {
+//   buttonStart.disabled = true
+//   deleteButtonsFromMassive()
+//   document.querySelector('.buttons').remove()
+// } else if (input.value > 20) {
+//   buttonStart.disabled = true
+//   deleteButtonsFromMassive()
+//   document.querySelector('.buttons').remove()
+// } else {
+//   buttonStart.disabled = false
+// }
+
 
 ///////////////////////////GAME START////////////////////////////////////////
 
   buttonStart.addEventListener('click', () => {
-      deleteButtonsFromMassive()
-    for (let i = 0; i < +inputNumber; i++) {
+    deleteButtonsFromMassive()
+    let inputNumber = input.value
+    let randomNumber = Math.floor(Math.random() * inputNumber) + 1
+    const buttons = document.createElement('div')
+    buttons.className = 'buttons'
+    btnsWindow.appendChild(buttons)
+
+    for (let i = 0; i < inputNumber; i++) {
       let numberBtns = document.createElement('div')
           numberBtns.className = 'numberBtn'
           numberBtns.textContent = i + 1
@@ -129,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
   })
-})
 
 ///////////////////////////////GAME START FUNCTION///////////////////////////////////////////////
   
