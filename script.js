@@ -19,17 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
  
 ////////////////////////INPUT LENGTH CONTROL/////////////////////////////////////
 
+
 // if (input.value <= 1) {
 //   buttonStart.disabled = true
-//   deleteButtonsFromMassive()
-//   document.querySelector('.buttons').remove()
 // } else if (input.value > 20) {
 //   buttonStart.disabled = true
-//   deleteButtonsFromMassive()
-//   document.querySelector('.buttons').remove()
 // } else {
 //   buttonStart.disabled = false
 // }
+
+
 
 
 ///////////////////////////GAME START////////////////////////////////////////
@@ -37,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buttonStart.addEventListener('click', () => {
     deleteButtonsFromMassive()
     let inputNumber = input.value
+
     let randomNumber = Math.floor(Math.random() * inputNumber) + 1
     const buttons = document.createElement('div')
     buttons.className = 'buttons'
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scoreAfterGame.style.display = 'none'
       startGame()
     }, 2000)
-
+  
 //////////////////////////////FROM 2 TILL RANDOMNUMBER IN OBJECTS, SEARCH BUTTON WHO WAS PRESSED///////////////////
 
     key.addEventListener('click', (event) => {
@@ -236,7 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                Hävityt pelit: ${totalScoreLose}`
   })
 
-
   deleteButtonsFromMassive = () => {
     for (let i = 0; i < buttonsArray.length; i++) {
       delete buttonsArray[i]
@@ -244,4 +243,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  
 })
